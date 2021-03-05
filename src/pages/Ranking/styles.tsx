@@ -20,6 +20,10 @@ export const ContainerList = styled.div`
   width: 350px;
   height: 80%;
   overflow: auto;
+  // Mobile L
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const BackArrow = styled.svg`
@@ -29,4 +33,5 @@ export const BackArrow = styled.svg`
   :hover {
     cursor: pointer;
   }
+  align-self: end;
 `;

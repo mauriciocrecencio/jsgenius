@@ -1,7 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import logo from "../../images/logo.png";
-import ranking from "../../images/ranking.png";
 import { Button } from "../../styles/global";
 
 const Home = () => {
@@ -12,12 +10,12 @@ const Home = () => {
   return (
     <>
       <img
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", alignSelf: "flex-end" }}
         onClick={() => handlePage("/ranking")}
-        src={ranking}
+        src={"/ranking.png"}
         alt="Ranking Icon"
       />
-      <img src={logo} alt="JS Genius Logo" />
+      <img src={"/logo.png"} alt="JS Genius Logo" />
       <Button onClick={() => handlePage("/game")}>Iniciar Jogo</Button>
     </>
   );

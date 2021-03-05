@@ -19,16 +19,9 @@ const Ranking = () => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "350px",
-        }}
-      >
-        <BackArrow onClick={handlePage}></BackArrow>
-        <Title>Ranking</Title>
-      </div>
+      <BackArrow onClick={handlePage}></BackArrow>
+      <Title>Ranking</Title>
+
       {ranking.length > 1 && (
         <ContainerList>
           <List>
