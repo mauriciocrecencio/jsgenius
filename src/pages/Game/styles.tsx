@@ -10,6 +10,27 @@ export const CurrentNumber = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  // Laptop L
+  @media (max-width: 1440px) {
+    width: 40%;
+    height: 40%;
+  }
+  // Laptop
+  @media (max-width: 1024px) {
+    width: 40%;
+  }
+  // Tablet
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+  // Mobile L
+  @media (max-width: 500px) {
+    width: 60%;
+  }
+  // Mobile S
+  @media (max-width: 400) {
+    width: 75%;
+  }
 `;
 
 export const NumericKeyboardContainer = styled.div`
@@ -30,5 +51,27 @@ export const NumericKeyboardContainer = styled.div`
       color: #e6d5b8;
       transition: 0.4s;
     }
+  }
+  // Laptop L
+  @media (max-width: 1440px) {
+    width: 60%;
+    height: 55%;
+  }
+  // Laptop
+  @media (max-width: 1024px) {
+    width: 70%;
+  }
+  // Tablet
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+  // Mobile L
+  @media (max-width: 500px) {
+    width: 90%;
+  }
+
+  // Mobile S
+  @media (max-width: 350px) {
+    width: 95%;
   }
 `;

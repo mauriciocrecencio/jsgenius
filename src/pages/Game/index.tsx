@@ -20,6 +20,18 @@ const Game = () => {
     history.push("/endgame");
   };
 
+  const handleKeyboardDisable = (shouldDisable) => {
+    if (document.getElementById("keyboard") != null) {
+      if (shouldDisable) {
+        document.getElementById("keyboard").style.opacity = "30%";
+        document.getElementById("keyboard").style.pointerEvents = "none";
+        return;
+      }
+      document.getElementById("keyboard").style.opacity = "100%";
+      document.getElementById("keyboard").style.pointerEvents = "auto";
+    }
+  };
+
   const startSequence = () => {
     let count = 0;
     const interval = setInterval(() => {
@@ -29,6 +41,7 @@ const Game = () => {
         count++;
       } else {
         clearInterval(interval);
+        handleKeyboardDisable(false);
         displayNumber("?");
       }
     }, 300);
@@ -39,8 +52,9 @@ const Game = () => {
       if (userSequence[count] !== sequence[count]) return handlePage();
     }
     if (userSequence.length === sequence.length) {
-      // displayNumber("?");
       if (arraysAreEqual(sequence, userSequence)) {
+        handleKeyboardDisable(true);
+
         context.setUser({ ...context.user, score: context.user.score + 1 });
         setSequence([...sequence, generateRandomNumber()]);
         setUserSequence([]);
@@ -71,7 +85,7 @@ const Game = () => {
   return (
     <>
       <CurrentNumber id="display"></CurrentNumber>
-      <NumericKeyboardContainer>
+      <NumericKeyboardContainer id="keyboard">
         {ArrayOneToNine.map((element, index) => (
           <div onClick={() => handleClick(element)} key={index}>
             {element}

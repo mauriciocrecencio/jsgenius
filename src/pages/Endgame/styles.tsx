@@ -22,6 +22,10 @@ export const Input = styled.input`
   border: 1px solid #1f6f8b;
   border-radius: 10px;
   padding-left: 20px;
+  // Mobile S
+  @media (max-width: 350px) {
+    width: 98%;
+  }
 `;
 
 export const X = styled.svg`
@@ -31,5 +35,15 @@ export const X = styled.svg`
   background-image: url("/fechar.svg");
   :hover {
     cursor: pointer;
+  }
+`;
+
+export const ContainerButtonInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // Mobile S
+  @media (max-width: 350px) {
+    width: 100%;
   }
 `;

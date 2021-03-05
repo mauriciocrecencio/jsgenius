@@ -3,7 +3,14 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/user";
 import api from "../../services/api";
 import { Button } from "../../styles/global";
-import { Input, Score, ScoreNumber, Title, X } from "./styles";
+import {
+  ContainerButtonInput,
+  Input,
+  Score,
+  ScoreNumber,
+  Title,
+  X,
+} from "./styles";
 
 const Endgame = () => {
   const history = useHistory();
@@ -15,12 +22,32 @@ const Endgame = () => {
     history.push("/");
   };
 
+  const handleDisableButton = (shouldDisable) => {
+    if (shouldDisable) {
+      document.getElementById("post").style.opacity = "30%";
+      document.getElementById("post").style.pointerEvents = "none";
+    } else {
+      document.getElementById("post").style.opacity = "100%";
+      document.getElementById("post").style.pointerEvents = "click";
+    }
+  };
+
   const postUserOnRanking = async () => {
+    handleDisableButton(true);
     const data = {
       name,
       score,
     };
-    await api.post("/save", data).then(() => history.push("/ranking"));
+    await api
+      .post("/save", data)
+      .then(() => {
+        handleDisableButton(false);
+        history.push("/ranking");
+      })
+      .catch((err) => {
+        handleDisableButton(false);
+        window.alert(err);
+      });
   };
   return (
     <>
@@ -30,13 +57,15 @@ const Endgame = () => {
         score
         <ScoreNumber>{user.score}</ScoreNumber>
       </Score>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <ContainerButtonInput>
         <Input
           onChange={(e) => setUser({ ...user, name: e.target.value })}
           placeholder="Digite seu nome"
         ></Input>
-        <Button onClick={postUserOnRanking}>Salvar Ranking</Button>
-      </div>
+        <Button id="post" onClick={postUserOnRanking}>
+          Salvar Ranking
+        </Button>
+      </ContainerButtonInput>
     </>
   );
 };
